@@ -15,8 +15,7 @@ public class Mensagem {
 
     public static String checkSum(String mensagem){ // mensagem de 0´s e 1´s de tamanho multiplo de 8
         
-        String result = new String("00000000");        
-        
+        String result = new String("00000000");              
         int indice = 0;
         
         while(indice < mensagem.length()){  // enquanto o indice for menor ao tamanho da mensagem
@@ -24,13 +23,21 @@ public class Mensagem {
             result = addingBytes(result, mensagem.substring(indice, indice + 8 ));
             indice = indice + 8;
         }
-        
-        
-        
+
         return invertBits(result);
         //System.out.println("checksum = " + result);
     }
     
+    
+    /**
+     * 
+     * @param a 
+     * byte(sequencia de 8 caracteres 0´s ou 1´s)
+     * @param b 
+     * byte 
+     * @return 
+     * A soma dos bytes 'a' e 'b'
+     */
     private static String addingBytes(String a, String b){
             StringBuilder parcialResult = new StringBuilder("00000000");
             int position = 7;
@@ -78,6 +85,13 @@ public class Mensagem {
         return parcialResult.toString();
     }  
     
+    /**
+     * 
+     * @param input
+     * recebe uma String de 0´s e 1´s
+     * @return 
+     * retorna o complemento a 1 dos bits no input
+     */
     private static String invertBits(String input){
         StringBuffer output = new StringBuffer();
         
