@@ -26,7 +26,8 @@ public class Mensagem {
         }
         
         
-        return result;
+        
+        return invertBits(result);
         //System.out.println("checksum = " + result);
     }
     
@@ -77,6 +78,16 @@ public class Mensagem {
         return parcialResult.toString();
     }  
     
+    private static String invertBits(String input){
+        StringBuffer output = new StringBuffer();
+        
+        for (char c: input.toCharArray()){
+            if(c == '1')output.append('0');
+            if(c == '0')output.append('1');            
+        }              
+        
+        return output.toString();                    
+    }
 }
 
 
