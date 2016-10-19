@@ -90,7 +90,7 @@ public class Mensagem {
      * @param input
      * recebe uma String de 0´s e 1´s
      * @return 
-     * retorna o complemento a 1 dos bits no input
+     * retorna uma String de mesmo tamanho que o input tendo como valor o complemento a 1 dos bits no input
      */
     private static String invertBits(String input){
         StringBuffer output = new StringBuffer();
