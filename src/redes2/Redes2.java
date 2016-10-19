@@ -27,7 +27,7 @@ public class Redes2 {
                                 //parcial+ 10100100
                                         + "11111111")
                                 //----------------------
-                                // final   10100100
+                                // final   10100100 RESULTADO 
                             ); 
     }
     
