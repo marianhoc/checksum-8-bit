@@ -39,7 +39,7 @@ public class Mensagem {
      * A soma dos bytes 'a' e 'b'
      */
     private static String addingBytes(String a, String b){
-            StringBuilder parcialResult = new StringBuilder("00000000");
+            StringBuilder partialResult = new StringBuilder("00000000");
             int position = 7;
             int carry = 0;
             
@@ -51,15 +51,15 @@ public class Mensagem {
                         //      a variavel carry ja vai ter valor 0     
                         //break;
                     case 1:
-                        parcialResult.setCharAt(position, '1');
+                        partialResult.setCharAt(position, '1');
                         carry = 0;                        
                         break;
                     case 2:
-                        parcialResult.setCharAt(position, '0');
+                        partialResult.setCharAt(position, '0');
                         carry = 1;
                         break;
                     case 3:
-                        parcialResult.setCharAt(position, '1');
+                        partialResult.setCharAt(position, '1');
                         carry = 1;
                         break;                        
                 }
@@ -72,17 +72,17 @@ public class Mensagem {
                     if (position == -1){    
                         position = 7;   
                     }                    
-                    if(parcialResult.charAt(position) == '1'){
-                        parcialResult.setCharAt(position, '0');
+                    if(partialResult.charAt(position) == '1'){
+                        partialResult.setCharAt(position, '0');
                         position--;
                     }else{
-                        parcialResult.setCharAt(position, '1');
+                        partialResult.setCharAt(position, '1');
                         carry = 0;
                     }                                                                       
                 }
             }
             
-        return parcialResult.toString();
+        return partialResult.toString();
     }  
     
     /**
