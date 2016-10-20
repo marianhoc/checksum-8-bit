@@ -30,7 +30,7 @@ public class Redes2 {
                                 // final   10100100 RESULTADO 
                             ); 
          
-         System.out.println(Mensagem.checkSum(Mensagem.gerarMensagemDeTamanho(15)));
+         System.out.println(Mensagem.checkSum(Mensagem.gerarMensagemDeTamanho(5)));
          
     }
     

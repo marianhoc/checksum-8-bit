@@ -126,8 +126,40 @@ public class Mensagem {
 
         }
         
-        System.out.println("mensagem aleatoria = " + mensagem);
+        System.out.println("mensagem aleatoria = \t" + mensagem);
+        System.out.println("mensagem com error  = \t" + inserirErroAleatorio(mensagem.toString(), mensagem.length()/8, 0.2));
         return mensagem.toString();
+    }
+
+    /**
+     * A função vai inserir erros no bits aleatoriamente
+     * para garantir que a mensagem final seja diferente da mensagem original. 
+     * 
+     * @param mensagemInput sequência de bytes
+     * @param tamanhoMensagem tamanho da mensagem em bytes 
+     * @param probabilidade probabilidade p de corrupção de bits 
+     * @return a mensagem original com bits potencialmente alterados
+     */
+    public static String inserirErroAleatorio(String mensagemInput,int tamanhoMensagem, double probabilidade ){
+       StringBuffer output = new StringBuffer(mensagemInput);
+       Boolean changed = false;              
+       
+       while(!changed){
+                    for (int i = 0 ; i<tamanhoMensagem*8; i++){
+                        if (Math.random()<probabilidade) {
+                           changed = true;
+                           if (output.charAt(i) == '1'){
+                           output.setCharAt(i, '0');         
+                           }else{
+                               output.setCharAt(i, '1');
+                           }                 
+                        }
+                    }
+                }
+
+       
+       
+       return output.toString();
     }
 }
     
