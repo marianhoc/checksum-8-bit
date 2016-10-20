@@ -117,10 +117,13 @@ public class Mensagem {
         StringBuffer mensagem = new StringBuffer();
         
         for (int i=0; i<bytes*8 ; i++){
-            if(Math.random()>0.5)
-            mensagem.append('0');
-            else
-                mensagem.append('1');
+            if(Math.random()>0.5){
+            mensagem.append('0');    
+            }
+            else{
+                mensagem.append('1');               
+            }
+
         }
         
         System.out.println("mensagem aleatoria = " + mensagem);
