@@ -6,12 +6,15 @@
 package redes2;
 
 
+import java.util.Random;
+
 /**
  *
  * @author copes
  */
 public class Mensagem {
-  
+
+    private static long seed = 123456L;
 
     public static String checkSum(String mensagem){ // mensagem de 0´s e 1´s de tamanho multiplo de 8
         
@@ -140,26 +143,26 @@ public class Mensagem {
      * @param probabilidade probabilidade p de corrupção de bits 
      * @return a mensagem original com bits potencialmente alterados
      */
-    public static String inserirErroAleatorio(String mensagemInput,int tamanhoMensagem, double probabilidade ){
-       StringBuffer output = new StringBuffer(mensagemInput);
-       Boolean changed = false;              
+    public static String inserirErroAleatorio(String mensagemInput, int tamanhoMensagem, double probabilidade) {
+
+        StringBuffer output = new StringBuffer(mensagemInput);
+        Boolean changed = false;
+        Random random = new Random(seed);
        
-       while(!changed){
-                    for (int i = 0 ; i<tamanhoMensagem*8; i++){
-                        if (Math.random()<probabilidade) {
-                           changed = true;
-                           if (output.charAt(i) == '1'){
-                           output.setCharAt(i, '0');         
-                           }else{
-                               output.setCharAt(i, '1');
-                           }                 
-                        }
+        while(!changed){
+            for (int i = 0; i < tamanhoMensagem; i++){
+                if (random.nextDouble() <= probabilidade) {
+                    changed = true;
+                    if (output.charAt(i) == '1'){
+                        output.setCharAt(i, '0');
+                    }else{
+                        output.setCharAt(i, '1');
                     }
                 }
+            }
+        }
 
-       
-       
-       return output.toString();
+        return output.toString();
     }
 }
     
