@@ -5,7 +5,7 @@
  */
 package br.uff.redes2.teste;
 
-import br.uff.redes2.modelo.GeradorCRC;
+import br.uff.redes2.visao.GeradorCRC;
 
 /**
  *
