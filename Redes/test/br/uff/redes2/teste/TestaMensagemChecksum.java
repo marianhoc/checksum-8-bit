@@ -5,7 +5,6 @@
  */
 package br.uff.redes2.teste;
 
-import br.uff.redes2.modelo.Mensagem;
 import br.uff.redes2.modelo.MensagemChecksum;
 
 /**

@@ -59,6 +59,31 @@ public class Mensagem {
         }
         this.texto = output.toString();
     }
+    
+     /**
+     * A função de geração de mensagens aleatórias recebe como argumento um
+     * tamanho, em bytes, da mensagem a ser gerada. A implementação utiliza uma
+     * função escolhida para geração de números pseudo-aleatórios para a
+     * obtenção dos valores dos bytes da mensagem resultante
+     *
+     * @param bytes tamanho, em bytes, da mensagem a ser gerada.
+     * @return String, sequencia de 0´se 1´s
+     *
+     */
+    private String gerarMensagemDeTamanho(long bytes, long semente, double probabilidade) {
+        StringBuilder mensagem = new StringBuilder();
+        Random random = new Random(semente);
+        
+        for (long i = 0; i < bytes * 8; i++) {
+            if (random.nextDouble() > probabilidade) {
+                mensagem.append('0');
+            } else {
+                mensagem.append('1');
+            }
+
+        }
+        return mensagem.toString();
+    }
 
     @Override
     public int hashCode() {

@@ -5,7 +5,6 @@
  */
 package br.uff.redes2.teste;
 
-import br.uff.redes2.modelo.Mensagem;
 import br.uff.redes2.modelo.MensagemCRC;
 
 /**
@@ -14,7 +13,7 @@ import br.uff.redes2.modelo.MensagemCRC;
  */
 public class TestaMensagemCRC {
     public static void main(String[] args) {
-        String texto = "10110110";
+        String texto = "101110";
         int polinomio = 127;
         
         MensagemCRC m1 = new MensagemCRC(texto, polinomio);
