@@ -82,7 +82,7 @@ public class GeradorChecksum {
         
         System.out.println("Quantidade de pacotes gerados: " + this.quantidadeIteracoes);
         System.out.println("Quantidade de colisões: " + this.quantidadeColisoes);
-        System.out.println("Percentual de colisões: " + this.quantidadeColisoes/(double)this.quantidadeIteracoes + "%");
+        System.out.println("Percentual de colisões: " + (this.quantidadeColisoes / (double)this.quantidadeIteracoes)*100 + "%");
         
     }
 

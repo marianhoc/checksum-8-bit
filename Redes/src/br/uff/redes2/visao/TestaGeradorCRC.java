@@ -13,7 +13,7 @@ import br.uff.redes2.modelo.GeradorCRC;
  */
 public class TestaGeradorCRC {
     public static void main(String[] args) {
-        GeradorCRC gerador = new GeradorCRC(2, 0.4, 5, 38, 100, true);
+        GeradorCRC gerador = new GeradorCRC(2, 0.1, 1000, 292, 70000);
         
         gerador.executa();
         gerador.relatorio();

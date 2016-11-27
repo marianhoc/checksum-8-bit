@@ -13,7 +13,7 @@ import br.uff.redes2.modelo.GeradorChecksum;
  */
 public class TestaGeradorChecksum {
     public static void main(String[] args) {
-        GeradorChecksum gerador = new GeradorChecksum(3, 0.1, 100, 10000);
+        GeradorChecksum gerador = new GeradorChecksum(1, 0.9, 6, 10000);
         
         gerador.executa();
         gerador.relatorio();

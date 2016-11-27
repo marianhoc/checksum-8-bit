@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/felipe/Dropbox/Faculdade/Sistemas%20de%20Informação/4%20Periodo/Redes%20II%20para%20SI/Trabalho%201/Redes/src/br/uff/redes2/modelo/GeradorChecksum.java</file>
-            <file>file:/home/felipe/Dropbox/Faculdade/Sistemas%20de%20Informação/4%20Periodo/Redes%20II%20para%20SI/Trabalho%201/Redes/src/br/uff/redes2/visao/TestaGeradorChecksum.java</file>
-            <file>file:/home/felipe/Dropbox/Faculdade/Sistemas%20de%20Informação/4%20Periodo/Redes%20II%20para%20SI/Trabalho%201/Redes/src/br/uff/redes2/visao/TestaGeradorCRC.java</file>
-            <file>file:/home/felipe/Dropbox/Faculdade/Sistemas%20de%20Informação/4%20Periodo/Redes%20II%20para%20SI/Trabalho%201/Redes/src/br/uff/redes2/modelo/GeradorCRC.java</file>
-            <file>file:/home/felipe/Dropbox/Faculdade/Sistemas%20de%20Informação/4%20Periodo/Redes%20II%20para%20SI/Trabalho%201/Redes/src/br/uff/redes2/modelo/Mensagem.java</file>
-            <file>file:/home/felipe/Dropbox/Faculdade/Sistemas%20de%20Informação/4%20Periodo/Redes%20II%20para%20SI/Trabalho%201/Redes/src/br/uff/redes2/modelo/MensagemCRC.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
