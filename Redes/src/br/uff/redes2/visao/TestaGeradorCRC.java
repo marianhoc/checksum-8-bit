@@ -11,18 +11,22 @@ import java.util.List;
  */
 public class TestaGeradorCRC {
 
+    public static final int BASE_16 = 16;
+
     public static void main(String[] args) {
 
-        String crc8 = "07"; // 0111
-        String crc16 = "1021"; // 0001 0000 0010 0001
-        String crc32 = "04C11DB7"; // 0000 0100 1100 0001 0001 1101 1011 0111
+        String crc8 = "D5"; // 0111
+        String crc8_AUTOSAR = "2F"; // 0001 0000 0010 0001
+        String crc8_WCDMA = "9B"; // 0001 0000 0010 0001
         String crcCustomizado = "196"; // 11001 0110
 
-        int quantidadeIteracoes = 10000;
+        int quantidadeIteracoes = 10_000;
 
         List<Long> sementes = new ArrayList<Long>() {{
             add(123456L);
-            add(1L);
+            add(30L);
+            add(959124L);
+            add(124523L);
             add(519281291L);
         }};
 
@@ -39,8 +43,8 @@ public class TestaGeradorCRC {
         }};
 
         testaCRC(crc8, quantidadeIteracoes, sementes, probabilidades, tamanhoPacotes);
-        testaCRC(crc16, quantidadeIteracoes, sementes, probabilidades, tamanhoPacotes);
-        testaCRC(crc32, quantidadeIteracoes, sementes, probabilidades, tamanhoPacotes);
+        testaCRC(crc8_AUTOSAR, quantidadeIteracoes, sementes, probabilidades, tamanhoPacotes);
+        testaCRC(crc8_WCDMA, quantidadeIteracoes, sementes, probabilidades, tamanhoPacotes);
         testaCRC(crcCustomizado, quantidadeIteracoes, sementes, probabilidades, tamanhoPacotes);
     }
 
@@ -50,7 +54,7 @@ public class TestaGeradorCRC {
             for (Double probabilidade : probabilidades) {
                 for(Long tamanhoPacote : tamanhoPacotes) {
 
-                    GeradorCRC gerador = new GeradorCRC(semente, probabilidade, tamanhoPacote, quantidadeIteracoes, Integer.parseInt(polinomio, 16));
+                    GeradorCRC gerador = new GeradorCRC(semente, probabilidade, tamanhoPacote, quantidadeIteracoes, Integer.parseInt(polinomio, BASE_16), false);
 
                     gerador.executa();
                     gerador.relatorio();

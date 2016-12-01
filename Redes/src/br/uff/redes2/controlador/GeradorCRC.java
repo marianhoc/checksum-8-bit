@@ -26,7 +26,7 @@ public class GeradorCRC extends Gerador {
     }
 
     public GeradorCRC(long sementeNumAleatorio, double probabilidadeErro, long tamanhoPacote, int quantidadeIteracoes, int polinomio, boolean debug) {
-        this(sementeNumAleatorio, probabilidadeErro, tamanhoPacote, polinomio, quantidadeIteracoes);
+        this(sementeNumAleatorio, probabilidadeErro, tamanhoPacote, quantidadeIteracoes, polinomio);
         this.debug = debug;
     }
 
