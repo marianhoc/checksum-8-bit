@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.uff.redes2.modelo;
 
 /**
  *
  * @author felipe
  */
-public class MensagemChecksum extends Mensagem{
+public class MensagemChecksum extends Mensagem {
 
     public static final int BYTE = 8;
 
@@ -18,10 +13,10 @@ public class MensagemChecksum extends Mensagem{
     
     public MensagemChecksum(String texto) {
         super(texto);
-        super.deteccaoErro = this.checkSum();
+        super.deteccaoErro = this.executaCalculo();
     }
     
-    private String checkSum(){ // mensagem de 0´s e 1´s de tamanho multiplo de 8
+    public String executaCalculo(){ // mensagem de 0´s e 1´s de tamanho multiplo de 8
 
         String result = initializeWithZeroes(BYTE);
         int indice = 0;
@@ -118,11 +113,5 @@ public class MensagemChecksum extends Mensagem{
         
         return output.toString();                    
     }
-     
-    @Override
-    public void inserirErro(long seed, double probabilidade){
-        super.inserirErro(seed, probabilidade);
-        super.setDeteccaoErro(this.checkSum());
-    }
-    
+
 }

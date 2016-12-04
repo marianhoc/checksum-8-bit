@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.uff.redes2.modelo;
 
 /**
@@ -10,17 +5,16 @@ package br.uff.redes2.modelo;
  * @author felipe
  */
 public class MensagemCRC extends Mensagem{
+    public static final int CRC_COEFFICIENT = 9;
     private String polinomio;
-    private int[] crc;
 
     public MensagemCRC(String mensagem, int polinomio) {
         super(mensagem);
-        this.polinomio = Integer.toBinaryString(polinomio);
-        this.crc = this.calculaCRC();
-        setDeteccaoErro(this.intArray2String(this.crc));
+        this.polinomio = representacaoBinaria(Integer.toBinaryString(polinomio));
+        setDeteccaoErro(executaCalculo());
     }
-    
-     private int [] calculaCRC(){
+
+    public String executaCalculo(){
        
         int lcrc[] = new int[this.polinomio.length() - 1]; //Usado para guardar o valor do crc
         int posicaoBit1 = 0; //Usando para guardar a posição do bit 1 no resultado do calculo
@@ -63,18 +57,10 @@ public class MensagemCRC extends Mensagem{
         //copia apenas o resultado do crc
         System.arraycopy(resultadoIntArray, resultadoIntArray.length - (polinomioIntArray.length-1), lcrc, 0, lcrc.length);
         
-        return lcrc;
+        return this.intArray2String(lcrc);
     }
 
-    @Override
-    public void inserirErro(long seed, double probabilidade){
-        super.inserirErro(seed, probabilidade);
-        this.crc = this.calculaCRC();
-        setDeteccaoErro(this.intArray2String(this.crc));
-    }
-            
-     
-     private int[] strig2IntArray(String str){
+    private int[] strig2IntArray(String str){
         int intArray[] = new int[str.length()];
         
         for(int i = 0; i < intArray.length; i++){
@@ -93,12 +79,16 @@ public class MensagemCRC extends Mensagem{
         
         return sb.toString();
     }
-    
-    private void imprimeIntArray(int[] intArray){
-        for(int i : intArray){
-            System.out.print(i);
+
+    private String representacaoBinaria(String polinomio) {
+        StringBuilder sb = new StringBuilder("1");
+
+        while(sb.length() + polinomio.length() < CRC_COEFFICIENT) {
+            sb.append("0");
         }
-        System.out.println("");
-    }   
-    
+
+        sb.append(polinomio);
+        return sb.toString();
+    }
+
 }

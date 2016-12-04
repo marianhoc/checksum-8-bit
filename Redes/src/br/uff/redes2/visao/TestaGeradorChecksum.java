@@ -9,6 +9,7 @@ import br.uff.redes2.controlador.GeradorChecksum;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -17,39 +18,25 @@ import java.util.List;
 public class TestaGeradorChecksum {
 
     public static void main(String[] args) {
+        try {
+            long semente = Objects.requireNonNull(Long.valueOf(args[0]));
+            double probabilidade = Objects.requireNonNull(Double.valueOf(args[1]));
+            int tamanhoPacote = Objects.requireNonNull(Integer.valueOf(args[2]));
+            int quantidadeIteracoes = Objects.requireNonNull(Integer.valueOf(args[3]));
 
-        int quantidadeIteracoes = 10000;
-
-        List<Long> sementes = new ArrayList<Long>() {{
-            add(123456L);
-            add(1L);
-            add(519281291L);
-        }};
-
-        List<Double> probabilidades = new ArrayList<Double>() {{
-            add(0.1);
-            add(0.5);
-            add(0.9);
-        }};
-
-        List<Long> tamanhoPacotes = new ArrayList<Long>() {{
-            add(150L);
-            add(700L);
-            add(1450L);
-        }};
-
-        for (Long semente : sementes) {
-            for (Double probabilidade : probabilidades) {
-                for(Long tamanhoPacote : tamanhoPacotes) {
-
-                    GeradorChecksum gerador = new GeradorChecksum(semente, probabilidade, tamanhoPacote, quantidadeIteracoes);
-
-                    gerador.executa();
-                    gerador.relatorio();
-
-                }
-            }
+            testaChecksum(semente, probabilidade, tamanhoPacote, quantidadeIteracoes);
+        } catch (Exception e) {
+            System.err.println("Parâmetros faltando.\nPor favor, preencha todos os parâmetros, nesta ordem: Semente, probabilidade de erro, tamanho de pacotes, quantidade de iterações.");
         }
+    }
+
+
+    private static void testaChecksum(long semente, double probabilidade, int tamanhoPacote, int quantidadeIteracoes) {
+
+        GeradorChecksum gerador = new GeradorChecksum(semente, probabilidade, tamanhoPacote, quantidadeIteracoes);
+
+        gerador.executa();
+        gerador.relatorio();
 
     }
     

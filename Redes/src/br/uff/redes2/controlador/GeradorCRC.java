@@ -1,8 +1,8 @@
 package br.uff.redes2.controlador;
 
-    import br.uff.redes2.modelo.MensagemCRC;
+import br.uff.redes2.modelo.MensagemCRC;
 
-    import java.text.MessageFormat;
+import java.text.MessageFormat;
 
 /**
  *
@@ -33,16 +33,16 @@ public class GeradorCRC extends Gerador {
     public void executa() {
 
         for (int i = 0; i < quantidadeIteracoes; i++) {
-            String pacoteLocal = this.gerarMensagemDeTamanho(tamanhoPacote);
+            String pacoteLocal = gerarMensagemDeTamanho(tamanhoPacote);
 
             if (debug) {
                 System.out.println("PacoteLocal: " + pacoteLocal);
             }
 
             MensagemCRC mensagemCRCOriginal = new MensagemCRC(pacoteLocal, this.polinomio);
-            MensagemCRC mensagemCRCAlterada = new MensagemCRC(pacoteLocal, this.polinomio);
+            MensagemCRC mensagemCRCAlterada = new MensagemCRC(geradorErro.inserirErro(pacoteLocal, probabilidadeErro), this.polinomio);
 
-            executa(mensagemCRCOriginal, mensagemCRCAlterada);
+            verificaColisao(mensagemCRCOriginal, mensagemCRCAlterada);
         }
 
     }

@@ -1,5 +1,6 @@
 package br.uff.redes2.controlador;
 
+import br.uff.redes2.util.GeradorErro;
 import br.uff.redes2.modelo.Mensagem;
 
 import java.util.Random;
@@ -7,6 +8,7 @@ import java.util.Random;
 public abstract class Gerador {
 
     protected Random random;
+    protected GeradorErro geradorErro;
 
     protected long sementeNumAleatorio;
     protected double probabilidadeErro;
@@ -33,6 +35,7 @@ public abstract class Gerador {
         this.debug = false;
         this.startTime = System.currentTimeMillis();
         random = new Random(sementeNumAleatorio);
+        geradorErro = new GeradorErro(sementeNumAleatorio);
 
     }
 
@@ -42,9 +45,7 @@ public abstract class Gerador {
         
     }
 
-    protected void executa(Mensagem mensagemOriginal, Mensagem mensagemAlterada) {
-
-        mensagemAlterada.inserirErro(this.sementeNumAleatorio, this.probabilidadeErro);
+    void verificaColisao(Mensagem mensagemOriginal, Mensagem mensagemAlterada) {
 
         if (debug) {
             System.out.println("MO: " + mensagemOriginal);

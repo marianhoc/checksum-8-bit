@@ -28,15 +28,15 @@ public class GeradorChecksum extends Gerador {
     
     public void executa() {
 
-        for(long i = 0; i < quantidadeIteracoes; i++){
+        for(int i = 0; i < quantidadeIteracoes; i++){
             String pacoteLocal = this.gerarMensagemDeTamanho(tamanhoPacote);
             
             if(debug)System.out.println("PacoteLocal: " + pacoteLocal);
 
             MensagemChecksum mensagemChecksumOriginal = new MensagemChecksum(pacoteLocal);
-            MensagemChecksum mensagemChecksumAlterada = new MensagemChecksum(pacoteLocal);
+            MensagemChecksum mensagemChecksumAlterada = new MensagemChecksum(geradorErro.inserirErro(pacoteLocal, probabilidadeErro));
             
-           executa(mensagemChecksumOriginal, mensagemChecksumAlterada);
+           verificaColisao(mensagemChecksumOriginal, mensagemChecksumAlterada);
         }        
     }
     

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.uff.redes2.modelo;
 
 import java.util.Objects;
@@ -12,7 +7,7 @@ import java.util.Random;
  *
  * @author felipe
  */
-public class Mensagem {
+public abstract class Mensagem {
     
     protected String texto;
     protected String deteccaoErro;
@@ -39,51 +34,8 @@ public class Mensagem {
     public void setDeteccaoErro(String deteccaoErro) {
         this.deteccaoErro = deteccaoErro;
     }
-    
-    public void inserirErro(long seed, double probabilidade){
-        StringBuilder output = new StringBuilder(this.texto);
-        Boolean changed = false;
-        Random random = new Random(seed);
-       
-        while(!changed){
-            for (int i = 0; i < output.length(); i++){
-                if (random.nextDouble() <= probabilidade) {
-                    changed = true;
-                    if (output.charAt(i) == '1'){
-                        output.setCharAt(i, '0');
-                    }else{
-                        output.setCharAt(i, '1');
-                    }
-                }
-            }
-        }
-        this.texto = output.toString();
-    }
-    
-     /**
-     * A função de geração de mensagens aleatórias recebe como argumento um
-     * tamanho, em bytes, da mensagem a ser gerada. A implementação utiliza uma
-     * função escolhida para geração de números pseudo-aleatórios para a
-     * obtenção dos valores dos bytes da mensagem resultante
-     *
-     * @param bytes tamanho, em bytes, da mensagem a ser gerada.
-     * @return String, sequencia de 0´se 1´s
-     *
-     */
-    private String gerarMensagemDeTamanho(long bytes, long semente, double probabilidade) {
-        StringBuilder mensagem = new StringBuilder();
-        Random random = new Random(semente);
-        
-        for (long i = 0; i < bytes * 8; i++) {
-            if (random.nextDouble() > probabilidade) {
-                mensagem.append('0');
-            } else {
-                mensagem.append('1');
-            }
 
-        }
-        return mensagem.toString();
-    }
+    public abstract String executaCalculo();
 
     @Override
     public int hashCode() {
